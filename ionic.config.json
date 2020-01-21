@@ -1,0 +1,7 @@
+{
+  "name": "vin-20",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
