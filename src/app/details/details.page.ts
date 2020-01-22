@@ -33,7 +33,7 @@ export class DetailsPage implements OnInit {
     await this.modalController.dismiss();
   }
 
-  addToCave(id:number):void {
+  addToCave(id: number) {
 
   }
 
