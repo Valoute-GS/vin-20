@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { WineryService } from '../services/winery.service';
 import { wine } from '../types/wine';
-
 @Component({
   selector: 'app-details',
   templateUrl: './details.page.html',
@@ -12,9 +11,11 @@ export class DetailsPage implements OnInit {
   wines:wine[];
   id:number = 0;
 
-  constructor(private wineryService: WineryService) { }
+  constructor(
+    private wineryService: WineryService) { }
 
   ngOnInit() {
+
     this.getWines();
   }
 

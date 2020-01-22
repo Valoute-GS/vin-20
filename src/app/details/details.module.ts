@@ -12,8 +12,12 @@ import { RouterModule } from '@angular/router';
     FormsModule,
     IonicModule,
     RouterModule.forChild([{ path: '', component: DetailsPage }])
-
   ],
-  declarations: [DetailsPage]
+  declarations: [
+    DetailsPage
+  ],
+  exports: [
+    DetailsPage
+  ],
 })
 export class DetailsPageModule {}

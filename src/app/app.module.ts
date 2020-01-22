@@ -10,17 +10,20 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { WineryService } from './services/winery.service';
+import { DetailsPage } from './details/details.page';
+import { DetailsPageModule } from './details/details.module';
 
 @NgModule({
   declarations: [AppComponent],
-  entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, BrowserAnimationsModule],
+  entryComponents: [DetailsPage],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, BrowserAnimationsModule, DetailsPageModule],
   providers: [
     StatusBar,
     SplashScreen,
     WineryService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
+
   bootstrap: [AppComponent]
 })
 export class AppModule {}

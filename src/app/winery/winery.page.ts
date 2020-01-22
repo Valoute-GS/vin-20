@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { wine } from './../types/wine'
 import { WineryService } from '../services/winery.service';
+import { ModalController } from '@ionic/angular';
+import { DetailsPage } from '../details/details.page';
 
 @Component({
   selector: 'app-winery',
@@ -11,7 +13,7 @@ export class WineryPage implements OnInit {
 
   winesList: wine[][];
 
-  constructor(public wineryService: WineryService) { }
+  constructor(public wineryService: WineryService, public modalController: ModalController) { }
 
   ngOnInit() {
     this.winesList = [];
@@ -26,6 +28,14 @@ export class WineryPage implements OnInit {
         j += 2;
       }
     }
+  }
+
+  async presentModal() {
+    const modal = await this.modalController.create({
+      component: DetailsPage,
+      componentProps: { value: 123 }
+    });
+    return await modal.present();
   }
 
 }
