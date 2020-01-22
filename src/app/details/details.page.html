@@ -1,7 +1,9 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>{{wines[this.id].name}}</ion-title>
+    <ion-title>{{myWine.id}}</ion-title>
+    <ion-button (click)="closeModal()">Close Modal</ion-button>
   </ion-toolbar>
+  
 </ion-header>
 
 <ion-content>
@@ -11,10 +13,10 @@
         <img src="https://cdn0.iconfinder.com/data/icons/valentines-day-add-on/48/v-23-512.png">
       </ion-col>
       <ion-col size="6">
-        <h2>{{wines[this.id].name}}</h2>
-        <p>Type : {{wines[this.id].type}}</p>
-        <p>Note : {{wines[this.id].note}}/20</p>
-        <p>Avg Price : {{wines[this.id].price}}€</p>
+        <h2>{{myWine.name}}</h2>
+        <p>Type : {{myWine.type}}</p>
+        <p>Note : {{myWine.note}}/20</p>
+        <p>Avg Price : {{myWine.price}}€</p>
         <ion-button size="small" expand="full" color="primary" (click)="addToCave(this.id)">
           Add to cave
         </ion-button>
@@ -24,7 +26,7 @@
       </ion-col>
     </ion-row>
     <ion-row>
-      {{wines[this.id].description}}
+      {{myWine.description}}
     </ion-row>
   </ion-grid>
 

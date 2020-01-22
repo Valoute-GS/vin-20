@@ -30,10 +30,10 @@ export class WineryPage implements OnInit {
     }
   }
 
-  async presentModal() {
+  async presentModal(wineId: number) {
     const modal = await this.modalController.create({
       component: DetailsPage,
-      componentProps: { value: 123 }
+      componentProps: { id: wineId }
     });
     return await modal.present();
   }
