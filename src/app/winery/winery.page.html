@@ -5,12 +5,12 @@
 </ion-header>
 
 <ion-content>
-  <ion-grid >
+  <ion-grid class="winery">
       <ion-row *ngFor="let wines of this.winesList">
         <ion-col  *ngFor="let wine of wines" >
           <div class="wineBox">
-              <img class="bottle_end" src="http://www.abellanbottle.com/_assets/_images/abellan_bottle_bottom_view.png">
-              <button (click)="this.presentModal(wine.id)" class="wine_name">{{wine.name}}</button>
+              <img (click)="this.presentModal(wine.id)" class="bottle_end" src="http://www.abellanbottle.com/_assets/_images/abellan_bottle_bottom_view.png">
+              <span (click)="this.presentModal(wine.id)" class="wine_name">{{wine.name}}</span>
           </div>
         </ion-col>
       </ion-row>
