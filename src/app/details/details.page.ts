@@ -10,7 +10,7 @@ import { wine } from '../types/wine';
 export class DetailsPage implements OnInit {
 
   wines:wine[];
-  id = 0;
+  id:number = 0;
 
   constructor(private wineryService: WineryService) { }
 
@@ -20,6 +20,10 @@ export class DetailsPage implements OnInit {
 
   getWines():void {
     this.wines = this.wineryService.getMyCollection();
+  }
+
+  addToCave(id:number):void {
+
   }
 
 }
