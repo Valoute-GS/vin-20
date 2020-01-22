@@ -4,16 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { WineryPageRoutingModule } from './winery-routing.module';
 
 import { WineryPage } from './winery.page';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    WineryPageRoutingModule
+    RouterModule.forChild([{ path: '', component: WineryPage }])
+
   ],
   declarations: [WineryPage]
 })
