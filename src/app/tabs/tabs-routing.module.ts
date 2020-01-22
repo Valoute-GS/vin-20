@@ -4,7 +4,7 @@ import { TabsPage } from './tabs.page';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'main',
     component: TabsPage,
     children: [
       {
@@ -39,9 +39,13 @@ const routes: Routes = [
       },
       {
         path: 'winery',
-        loadChildren: () =>
-        import('../winery/winery.module').then(m => m.WineryPageModule)
-
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+            import('../winery/winery.module').then(m => m.WineryPageModule)
+          }
+        ]
       },
       {
         path: 'details',
@@ -55,14 +59,14 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: '/tabs/tab1',
+        redirectTo: 'main/winery',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs/tab1',
+    redirectTo: 'main/winery',
     pathMatch: 'full'
   }
 ];

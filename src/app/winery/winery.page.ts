@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { wine } from './../types/wine'
+import { WineryService } from '../services/winery.service';
 
 @Component({
   selector: 'app-winery',
@@ -10,13 +11,11 @@ export class WineryPage implements OnInit {
 
   wines : wine[];
 
-  constructor() { }
+  constructor(public wineryService: WineryService) { }
 
   ngOnInit() {
-
-    this.wines = [
-
-    ]
+    this.wines = this.wineryService.getMyCollection();
+    
   }
 
 }
