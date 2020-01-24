@@ -23,7 +23,7 @@ export class LoginPage implements OnInit {
       );
       this.authService.userId = userCredential.user.uid;
       await this.loginForm.hideLoading();
-      this.router.navigateByUrl('home');
+      this.router.navigateByUrl('main/winery');
     } catch (error) {
       await this.loginForm.hideLoading();
       this.loginForm.handleError(error);

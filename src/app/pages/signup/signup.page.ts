@@ -24,7 +24,7 @@ export class SignupPage implements OnInit {
       );
       this.authService.userId = userCredential.user.uid;
       await this.signupForm.hideLoading();
-      this.router.navigateByUrl('home');
+      this.router.navigateByUrl('main/winery');
     } catch (error) {
       await this.signupForm.hideLoading();
       this.signupForm.handleError(error);
