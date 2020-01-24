@@ -16,8 +16,6 @@ import { AppRoutingModule } from './app-routing.module';
   entryComponents: [DetailsPage],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, BrowserAnimationsModule, DetailsPageModule],
   providers: [
-    StatusBar,
-    SplashScreen,
     WineryService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
