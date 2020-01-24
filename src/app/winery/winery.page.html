@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>My Winery</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="winery">
+      <ion-row *ngFor="let wines of this.winesList">
+        <ion-col  *ngFor="let wine of wines" >
+          <div class="wineBox">
+              <img (click)="this.presentModal(wine.id)" class="bottle_end" src="http://www.abellanbottle.com/_assets/_images/abellan_bottle_bottom_view.png">
+              <span (click)="this.presentModal(wine.id)" class="wine_name">{{wine.name}}</span>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+</ion-content>
