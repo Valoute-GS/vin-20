@@ -9,12 +9,13 @@ import { DetailsPage } from './details/details.page';
 import { DetailsPageModule } from './details/details.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import {TabsPageModule} from "./tabs/tabs.module";
 
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [DetailsPage],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, BrowserAnimationsModule, DetailsPageModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, BrowserAnimationsModule, DetailsPageModule,TabsPageModule],
   providers: [
     WineryService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
