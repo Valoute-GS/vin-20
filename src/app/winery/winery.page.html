@@ -10,7 +10,7 @@
         <ion-col  *ngFor="let wine of wines" >
           <div class="wineBox">
               <img (click)="this.presentModal(wine.id)" class="bottle_end" src="http://www.abellanbottle.com/_assets/_images/abellan_bottle_bottom_view.png">
-              <span (click)="this.presentModal(wine.id)" class="wine_name">{{wine.name}}</span>
+              <span (click)="this.presentModal(wine.id)" class="wine_name">{{wine.title}}</span>
           </div>
         </ion-col>
       </ion-row>

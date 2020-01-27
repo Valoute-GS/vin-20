@@ -8,7 +8,7 @@ import { ModalController } from '@ionic/angular';
   styleUrls: ['./details.page.scss'],
 })
 export class DetailsPage implements OnInit {
-  @Input() id: number;
+  @Input() id: String;
   myWine: wine;
 
   constructor(
@@ -33,7 +33,7 @@ export class DetailsPage implements OnInit {
     await this.modalController.dismiss();
   }
 
-  addToCave(id: number) {
+  addToCave(id: String) {
 
   }
 
