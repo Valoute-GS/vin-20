@@ -3,6 +3,7 @@ import { UserCredential } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/user/auth.service';
 import { AuthFormComponent } from 'src/app/components/auth-form/auth-form.component';
 import { Router } from '@angular/router';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-signup',
@@ -12,12 +13,20 @@ import { Router } from '@angular/router';
 export class SignupPage implements OnInit {
   @ViewChild(AuthFormComponent, { static: false })
   signupForm: AuthFormComponent;
-  constructor(private authService: AuthService, private router: Router) {}
+  winery: AngularFirestoreCollection;
+  users: AngularFirestoreCollection;
 
-  ngOnInit() {}
+  constructor(private authService: AuthService, private router: Router, private firestore: AngularFirestore) {
+    this.winery = this.firestore.collection('winery');
+    this.users = this.firestore.collection('users');
+  }
+
+  ngOnInit() {
+  }
 
   async signupUser(credentials: UserCredential): Promise<void> {
     try {
+      this.users.add({ email: credentials.email });
       const userCredential: firebase.auth.UserCredential = await this.authService.signupUser(
         credentials.email,
         credentials.password

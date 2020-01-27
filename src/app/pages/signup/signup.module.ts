@@ -8,6 +8,11 @@ import { IonicModule } from '@ionic/angular';
 import { SignupPage } from './signup.page';
 import { AuthModule } from 'src/app/shared-modules/auth.module';
 
+import { AngularFireModule } from '@angular/fire';
+import { environment } from 'src/environments/environment';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFirestore } from '@angular/fire/firestore';
+
 const routes: Routes = [
   {
     path: '',
@@ -21,8 +26,11 @@ const routes: Routes = [
     FormsModule,
     IonicModule,
     RouterModule.forChild(routes),
-    AuthModule
+    AuthModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule
   ],
-  declarations: [SignupPage]
+  declarations: [SignupPage],
+  providers: [AngularFirestore]
 })
 export class SignupPageModule {}
