@@ -26,7 +26,10 @@ export class SignupPage implements OnInit {
 
   async signupUser(credentials: UserCredential): Promise<void> {
     try {
-      this.users.add({ email: credentials.email });
+      this.users.add({
+        cave: [],
+        wishlist: []
+      });
       const userCredential: firebase.auth.UserCredential = await this.authService.signupUser(
         credentials.email,
         credentials.password

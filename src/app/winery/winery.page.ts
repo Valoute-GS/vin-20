@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { wine } from './../types/wine'
+import { wine } from './../types/wine';
 import { WineryService } from '../services/winery.service';
 import { ModalController } from '@ionic/angular';
 import { DetailsPage } from '../details/details.page';
