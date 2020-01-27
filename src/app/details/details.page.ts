@@ -10,14 +10,14 @@ import { ModalController } from '@ionic/angular';
 export class DetailsPage implements OnInit {
   @Input() id: String;
   myWine: wine;
-
+  
   constructor(
     private wineryService: WineryService,
-    private modalController: ModalController) { }
+    private modalController: ModalController,
+    ) { }
 
   ngOnInit() {
-
-    this.getWines();
+        this.getWines();
   }
 
   getWines() {

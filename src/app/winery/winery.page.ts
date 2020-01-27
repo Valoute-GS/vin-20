@@ -3,6 +3,7 @@ import { wine } from './../types/wine';
 import { WineryService } from '../services/winery.service';
 import { ModalController } from '@ionic/angular';
 import { DetailsPage } from '../details/details.page';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-winery',
@@ -12,10 +13,18 @@ import { DetailsPage } from '../details/details.page';
 export class WineryPage implements OnInit {
 
   winesList: wine[][];
+  id: Promise<any>;
 
-  constructor(public wineryService: WineryService, public modalController: ModalController) { }
+  constructor(
+    public wineryService: WineryService,
+    public modalController: ModalController,
+    public storage: Storage
+    ) { }
 
   ngOnInit() {
+    this.storage.get('id').then((val) => {
+      this.id = val;
+    });;
     this.winesList = [];
     const wines = this.wineryService.getMyCollection();
     let j = 0;

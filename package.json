@@ -32,6 +32,7 @@
     "@ionic-native/status-bar": "^5.20.0",
     "@ionic/angular": "^4.11.10",
     "@ionic/pwa-elements": "^1.4.1",
+    "@ionic/storage": "^2.2.0",
     "angular": "^1.7.9",
     "cordova-android": "8.1.0",
     "cordova-browser": "6.0.0",
@@ -47,7 +48,7 @@
   },
   "devDependencies": {
     "@angular-devkit/architect": "~0.801.2",
-    "@angular-devkit/build-angular": "~0.801.2",
+    "@angular-devkit/build-angular": "^0.803.23",
     "@angular-devkit/core": "~8.1.2",
     "@angular-devkit/schematics": "~8.1.2",
     "@angular/cli": "~8.1.2",
