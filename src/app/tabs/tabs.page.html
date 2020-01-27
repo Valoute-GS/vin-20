@@ -1,10 +1,23 @@
 <ion-tabs>
 
   <ion-tab-bar slot="bottom">
-    <ion-tab-button tab="winery">
-        <ion-icon name="mail"></ion-icon>
-        <ion-label>winery</ion-label>
-      </ion-tab-button>
+
+    <ion-searchbar *ngIf="showSearchBar" placeholder="Search" [debounce]="250"></ion-searchbar>
+
+    <ion-tab-button tab="winery" *ngIf="showSearchBar === false">
+      <ion-icon name="mail"></ion-icon>
+      <ion-label>winery</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="" *ngIf="showSearchBar === false">
+      <ion-icon name="mail"></ion-icon>
+      <ion-label>Account</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button (click)="toggleSearchbar()">
+      <ion-icon name="search"></ion-icon>
+    </ion-tab-button>
+
   </ion-tab-bar>
 
 </ion-tabs>

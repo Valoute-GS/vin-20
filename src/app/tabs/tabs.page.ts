@@ -6,7 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['tabs.page.scss']
 })
 export class TabsPage {
-
+  showSearchBar:boolean = false;
+  
   constructor() {}
+
+  toggleSearchbar() {
+    this.showSearchBar = !this.showSearchBar;
+  }
 
 }
