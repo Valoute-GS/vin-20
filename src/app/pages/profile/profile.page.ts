@@ -3,6 +3,7 @@ import { AlertController } from '@ionic/angular';
 import { AuthService } from '../../services/user/auth.service';
 import { ProfileService } from '../../services/user/profile.service';
 import { Router } from '@angular/router';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-profile',
@@ -15,7 +16,8 @@ export class ProfilePage implements OnInit {
     private alertCtrl: AlertController,
     private authService: AuthService,
     private profileService: ProfileService,
-    private router: Router
+    private router: Router,
+    public storage: Storage
   ) {}
 
   ngOnInit() {
@@ -28,6 +30,7 @@ export class ProfilePage implements OnInit {
 
   logOut(): void {
     this.authService.logoutUser().then(() => {
+      this.storage.remove('id');
       this.router.navigateByUrl('login');
     });
   }
