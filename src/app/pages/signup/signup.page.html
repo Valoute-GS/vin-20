@@ -8,6 +8,9 @@
 </ion-header>
 
 <ion-content>
+  <ion-label position="stacked">Name</ion-label>
+  <ion-input type="text" [(ngModel)]="name" placeholder="Your name">
+  </ion-input>
   <app-auth-form #signupForm (formSubmitted)="signupUser($event)" [actionButtonText]="'Create Account'"></app-auth-form>
 
   <ion-button expand="block" fill="clear" routerLink="/login">

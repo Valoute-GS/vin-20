@@ -4,6 +4,7 @@ import { AuthService } from 'src/app/services/user/auth.service';
 import { AuthFormComponent } from 'src/app/components/auth-form/auth-form.component';
 import { Router } from '@angular/router';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-signup',
@@ -15,8 +16,10 @@ export class SignupPage implements OnInit {
   signupForm: AuthFormComponent;
   winery: AngularFirestoreCollection;
   users: AngularFirestoreCollection;
+  name: string;
 
-  constructor(private authService: AuthService, private router: Router, private firestore: AngularFirestore) {
+  constructor(private authService: AuthService, private router: Router, private firestore: AngularFirestore,
+              private storage: Storage) {
     this.winery = this.firestore.collection('winery');
     this.users = this.firestore.collection('users');
   }
@@ -26,15 +29,17 @@ export class SignupPage implements OnInit {
 
   async signupUser(credentials: UserCredential): Promise<void> {
     try {
-      this.users.add({
-        cave: [],
-        wishlist: []
-      });
       const userCredential: firebase.auth.UserCredential = await this.authService.signupUser(
         credentials.email,
         credentials.password
       );
       this.authService.userId = userCredential.user.uid;
+      this.users.doc(this.authService.userId).set({
+        name: this.name,
+        cave: [],
+        wishlist: []
+      });
+      this.storage.set('id', this.authService.userId);
       await this.signupForm.hideLoading();
       this.router.navigateByUrl('main/winery');
     } catch (error) {

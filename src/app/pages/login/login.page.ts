@@ -35,7 +35,6 @@ export class LoginPage implements OnInit {
       );
       this.authService.userId = userCredential.user.uid;
       this.storage.set('id', this.authService.userId);
-      console.log(this.authService.userId);
       await this.loginForm.hideLoading();
       this.router.navigateByUrl('main/winery');
     } catch (error) {
