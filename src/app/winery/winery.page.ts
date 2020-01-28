@@ -21,12 +21,12 @@ export class WineryPage implements OnInit {
     public storage: Storage
     ) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.storage.get('id').then((val) => {
       this.id = val;
     });;
     this.winesList = [];
-    const wines = this.wineryService.getMyCollection();
+    const wines = await this.wineryService.getMyCollection(this.id);
     let j = 0;
     for (let i = 0; j < wines.length; i++) {
       if (i % 2 === 0) {
