@@ -14,6 +14,7 @@ import { User } from '../types/user';
 export class WineryPage implements OnInit {
 
   winesList: Wine[][];
+  winesLocal : Wine[];
   id: string;
   name: string;
 
@@ -30,7 +31,8 @@ export class WineryPage implements OnInit {
           this.name = data.get('name');
       });
       this.wineryService.getMyCollection(this.id).then((wines) => {
-        this.parseWines(wines.data().cave);
+        this.winesLocal = wines.data().cave
+        this.parseWines(this.winesLocal);
       });
     });
   }
@@ -38,7 +40,7 @@ export class WineryPage implements OnInit {
   async wineDetailsModal(wine: Wine) {
     const modal = await this.modalController.create({
       component: DetailsPage,
-      componentProps: { wine : wine }
+      componentProps: { wine : wine, parent : this }
     });
     return await modal.present();
   }
