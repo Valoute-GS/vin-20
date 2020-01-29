@@ -35,10 +35,10 @@ export class WineryPage implements OnInit {
     });
   }
 
-  async wineDetailsModal(wineId: number) {
+  async wineDetailsModal(wine: Wine) {
     const modal = await this.modalController.create({
       component: DetailsPage,
-      componentProps: { id: wineId }
+      componentProps: { wine : wine }
     });
     return await modal.present();
   }
