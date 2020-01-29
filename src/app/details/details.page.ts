@@ -11,6 +11,7 @@ import { Storage } from '@ionic/storage';
 })
 export class DetailsPage implements OnInit {
   @Input() wine: Wine;
+  isMine:boolean;
   userId;
 
   constructor(
@@ -34,7 +35,7 @@ export class DetailsPage implements OnInit {
   }
 
   addToCave(id: string) {
-
+    this.wineryService.addToMyCollection(this.userId, this.wine);
   }
 
 }

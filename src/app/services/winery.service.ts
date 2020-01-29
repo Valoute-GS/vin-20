@@ -31,12 +31,9 @@ export class WineryService {
     return this.allWines;
   }
 
-  async addToMyCollection(myWine: Wine): Promise<void> {
-    this.storage.get('id').then((val) => {
-      this.id = val;
-    });
-    this.userProfile = firebase.firestore().collection('users').doc(await this.id).update({
-      cave : firebase.firestore.FieldValue.arrayUnion(Wine)
+  async addToMyCollection(id: string, myWine: Wine): Promise<void> {
+    this.userProfile = firebase.firestore().collection('users').doc(id).update({
+      cave : firebase.firestore.FieldValue.arrayUnion(myWine)
     });
   }
 
