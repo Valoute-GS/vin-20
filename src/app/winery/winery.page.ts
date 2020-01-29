@@ -6,6 +6,7 @@ import { DetailsPage } from '../details/details.page';
 import { Storage } from '@ionic/storage';
 import * as firebase from 'firebase/app';
 import { User } from '../types/user';
+import { ProviderService } from '../services/provider.service';
 @Component({
   selector: 'app-winery',
   templateUrl: './winery.page.html',
@@ -21,7 +22,8 @@ export class WineryPage implements OnInit {
   constructor(
     public wineryService: WineryService,
     public modalController: ModalController,
-    public storage: Storage
+    public storage: Storage,
+    public provider: ProviderService
     ) {}
 
   async ngOnInit() {
@@ -31,16 +33,17 @@ export class WineryPage implements OnInit {
           this.name = data.get('name');
       });
       this.wineryService.getMyCollection(this.id).then((wines) => {
-        this.winesLocal = wines.data().cave
+        this.winesLocal = wines.data().cave;
         this.parseWines(this.winesLocal);
       });
     });
+    this.provider.save(this);
   }
 
   async wineDetailsModal(wine: Wine) {
     const modal = await this.modalController.create({
       component: DetailsPage,
-      componentProps: { wine : wine, parent : this }
+      componentProps: { wine : wine }
     });
     return await modal.present();
   }

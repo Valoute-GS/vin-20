@@ -4,6 +4,7 @@ import { Wine } from '../types/wine';
 import { ModalController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 import { WineryPage } from '../winery/winery.page';
+import { ProviderService } from '../services/provider.service';
 
 @Component({
   selector: 'app-details',
@@ -12,18 +13,20 @@ import { WineryPage } from '../winery/winery.page';
 })
 export class DetailsPage implements OnInit {
   @Input() wine: Wine;
-  @Input() parent : WineryPage;
   isMine:boolean;
+  winery: WineryPage;
   userId;
 
   constructor(
     private wineryService: WineryService,
     private modalController: ModalController,
-    public storage: Storage
+    public storage: Storage,
+    public provider: ProviderService
     ) { }
 
   ngOnInit() {
-        this.getWines();
+    this.winery = this.provider.get();
+    this.getWines();
   }
 
   async getWines() {
@@ -37,8 +40,8 @@ export class DetailsPage implements OnInit {
   }
 
   addToCave(id: string) {
-    this.parent.winesLocal.push(this.wine);
-    this.parent.parseWines(this.wine);
+    this.winery.winesLocal.push(this.wine);
+    this.winery.parseWines(this.winery.winesLocal);
     this.wineryService.addToMyCollection(this.userId, this.wine);
   }
 

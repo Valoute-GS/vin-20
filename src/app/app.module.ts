@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import {TabsPageModule} from "./tabs/tabs.module";
 import { IonicStorageModule } from '@ionic/storage';
+import { ProviderService } from './services/provider.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,6 +26,7 @@ import { IonicStorageModule } from '@ionic/storage';
     TabsPageModule],
   providers: [
     WineryService,
+    ProviderService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
