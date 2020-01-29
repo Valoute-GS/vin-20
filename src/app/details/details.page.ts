@@ -10,10 +10,10 @@ import { Storage } from '@ionic/storage';
   styleUrls: ['./details.page.scss'],
 })
 export class DetailsPage implements OnInit {
-  @Input() id: String;
+  @Input() id: string;
   myWine: wine;
   userId;
-  
+
   constructor(
     private wineryService: WineryService,
     private modalController: ModalController,
@@ -25,23 +25,21 @@ export class DetailsPage implements OnInit {
   }
 
   async getWines() {
-    this.storage.get('id').then((val) => {
+    this.storage.get('id').then((val) => { 
       this.userId = val;
-    });;
-    const wines = await this.wineryService.getMyCollection(this.userId);
-    
-    wines.forEach(wine => {
-      if (wine.id === this.id) {
-        this.myWine = wine;
-      }
     });
+    this.wineryService.getWine(await this.id).then(
+      (wines) => {
+        console.log(wines);
+       // this.myWine = wines;
+      });
   }
 
   async closeModal() {
     await this.modalController.dismiss();
   }
 
-  addToCave(id: String) {
+  addToCave(id: string) {
 
   }
 

@@ -1,16 +1,16 @@
 export class wine{
-    id:String;
-    country:String;
-    description:String;
-    designation:String;
-    points:String;
-    price:String;
-    province:String;
-    region_1:String;
-    region_2:String;
-    taster_name:String;
-    taster_twitter_handle:String;
-    title:String;
-    variety:String;
-    winery:String;
+    id:string;
+    country:string;
+    description:string;
+    designation:string;
+    points:string;
+    price:string;
+    province:string;
+    region_1:string;
+    region_2:string;
+    taster_name:string;
+    taster_twitter_handle:string;
+    title:string;
+    variety:string;
+    winery:string;
 }

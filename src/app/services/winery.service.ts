@@ -11,15 +11,17 @@ import { wine } from '../types/wine';
   providedIn: 'root'
 })
 export class WineryService {
+
   public allWines: firebase.firestore.DocumentData;
   public userProfile: firebase.firestore.DocumentData;
+  public wine: firebase.firestore.DocumentData;
   public currentUser: firebase.User;
   id: Promise<any>;
 
   constructor(public storage: Storage, private authService: AuthService) {
   }
 
-  async getMyCollection(id:any){
+  async getMyCollection(id: any) {
     this.storage.get('id').then((val) => {
       this.id = val;
     });    
@@ -27,8 +29,8 @@ export class WineryService {
     return this.userProfile.get('cave');
   }
 
-  getAllWine(){
-    this.allWines = firebase.firestore().collection("winery").get();
+  getAllWine() {
+    this.allWines = firebase.firestore().collection('wineryPause').get();
     return this.allWines;
   }
 
@@ -40,5 +42,10 @@ export class WineryService {
     this.userProfile = firebase.firestore().collection("users").doc(await this.id).update({
       cave : firebase.firestore.FieldValue.arrayUnion(wine)
     })
+  }
+
+  getWine(id: string) {
+    this.wine = firebase.firestore().collection('winery').where('id', '==', id).get();
+    return this.wine;
   }
 }
