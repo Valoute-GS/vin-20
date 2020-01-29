@@ -13,8 +13,8 @@ import { ProviderService } from '../services/provider.service';
 })
 export class DetailsPage implements OnInit {
   @Input() wine: Wine;
-  isMine:boolean;
   winery: WineryPage;
+  isMine:boolean;
   userId;
 
   constructor(
@@ -27,6 +27,7 @@ export class DetailsPage implements OnInit {
   ngOnInit() {
     this.winery = this.provider.get();
     this.getWines();
+    this.isMineUp();
   }
 
   async getWines() {
@@ -39,10 +40,27 @@ export class DetailsPage implements OnInit {
     await this.modalController.dismiss();
   }
 
-  addToCave(id: string) {
+  public isMineUp(){
+    this.isMine = false;
+    this.winery.winesLocal.forEach(wine => {
+      if(this.wine.title === wine.title){
+        this.isMine = true;
+      }
+    });  
+  }
+
+  addToCave() {
     this.winery.winesLocal.push(this.wine);
     this.winery.parseWines(this.winery.winesLocal);
     this.wineryService.addToMyCollection(this.userId, this.wine);
+    this.isMineUp()
+  }
+
+  deleteFromCave(id: string) {
+    this.winery.winesLocal = this.winery.winesLocal.filter(myWine => myWine.id !== this.wine.id);
+    this.winery.parseWines(this.winery.winesLocal);
+    this.wineryService.removeToMyCollection(this.userId, this.wine);
+    this.isMineUp()
   }
 
 }

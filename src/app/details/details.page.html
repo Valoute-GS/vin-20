@@ -23,8 +23,11 @@
         <p>Location : {{wine.country}} - {{wine.province}} - {{wine.region_1}}</p>
         <p>Note : {{wine.points}}%</p>
         <p>Avg Price : {{wine.price}}€</p>
-        <ion-button size="small" expand="full" color="primary" (click)="addToCave(this.wine.id)">
+        <ion-button *ngIf="!this.isMine" size="small" expand="full" color="primary" (click)="addToCave()">
           Add to my cellar
+        </ion-button>
+        <ion-button *ngIf="this.isMine" size="small" expand="full" color="danger" (click)="deleteFromCave()">
+          Remove from cellar
         </ion-button>
       </ion-col>
     </ion-row>

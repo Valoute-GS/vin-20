@@ -37,6 +37,12 @@ export class WineryService {
     });
   }
 
+  async removeToMyCollection(id: string, myWine: Wine): Promise<void> {
+    this.userProfile = firebase.firestore().collection('users').doc(id).update({
+      cave : firebase.firestore.FieldValue.arrayRemove(myWine)
+    });
+  }
+
   getWine(id: string) {
     this.wine = firebase.firestore().collection('winery').where('id', '==', id).get();
     return this.wine;
