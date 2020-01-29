@@ -3,7 +3,6 @@ import { wine } from './../types/wine';
 import { WineryService } from '../services/winery.service';
 import { ModalController } from '@ionic/angular';
 import { DetailsPage } from '../details/details.page';
-import { AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Storage } from '@ionic/storage';
 import * as firebase from 'firebase/app';
 @Component({
@@ -15,8 +14,6 @@ export class WineryPage implements OnInit {
 
   winesList: wine[][];
   id: string;
-  winery: AngularFirestoreCollection;
-  users: AngularFirestoreCollection;
   name: string;
 
   constructor(
@@ -28,7 +25,7 @@ export class WineryPage implements OnInit {
   async ngOnInit() {
     this.storage.get('id').then((val) => {
       this.id = val;
-      firebase.firestore().collection('users').doc(this.id).get().then((data)=>{
+      firebase.firestore().collection('users').doc(this.id).get().then((data) => {
           this.name = data.get('name');
       });
     });

@@ -24,7 +24,7 @@ export class WineryService {
       this.id = val;
     });    
     this.userProfile = firebase.firestore().collection("users").doc(await this.id).get();        
-    return this.userProfile;
+    return this.userProfile.get('cave');
   }
 
   getAllWine(){
