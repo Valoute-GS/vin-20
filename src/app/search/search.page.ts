@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { WineryService } from '../services/winery.service';
-import { wine } from '../types/wine'
+import { Wine } from '../types/wine'
 import { ModalController } from '@ionic/angular';
 import { DetailsPage } from '../details/details.page';
 @Component({
@@ -10,8 +10,8 @@ import { DetailsPage } from '../details/details.page';
 })
 export class SearchPage implements OnInit {
 
-  public allWine: wine[] = [] ;
-  public wine: wine;
+  public allWine: Wine[] = [] ;
+  public wine: Wine;
   constructor(
     public wineryService: WineryService,
     public modalController: ModalController
@@ -19,8 +19,9 @@ export class SearchPage implements OnInit {
 
   ngOnInit() {
     this.wineryService.getAllWine().then(allWine => {
-      allWine.forEach(doc => {
-        this.wine = doc.data();
+      console.log(allWine.data().wines.winery);
+      allWine.data().wines.winery.forEach(doc => {
+        this.wine = doc;
         this.allWine.push(this.wine);
       });
     });

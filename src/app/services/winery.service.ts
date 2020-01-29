@@ -4,7 +4,7 @@ import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
 import { AuthService } from '../services/user/auth.service';
-import { wine } from '../types/wine';
+import { Wine } from '../types/wine';
 
 
 @Injectable({
@@ -21,27 +21,23 @@ export class WineryService {
   constructor(public storage: Storage, private authService: AuthService) {
   }
 
-  async getMyCollection(id: any) {
-    this.storage.get('id').then((val) => {
-      this.id = val;
-    });    
-    this.userProfile = firebase.firestore().collection("users").doc(await this.id).get();        
-    return this.userProfile.get('cave');
+  async getMyCollection(id: string) {
+    this.userProfile = firebase.firestore().collection('users').doc(id).get();
+    return this.userProfile;
   }
 
   getAllWine() {
-    this.allWines = firebase.firestore().collection('wineryPause').get();
+    this.allWines = firebase.firestore().collection('winery').doc('wines').get();
     return this.allWines;
   }
 
-  async addToMyCollection(myWine : wine) : Promise<void>{
+  async addToMyCollection(myWine: Wine): Promise<void> {
     this.storage.get('id').then((val) => {
       this.id = val;
     });
-    
-    this.userProfile = firebase.firestore().collection("users").doc(await this.id).update({
-      cave : firebase.firestore.FieldValue.arrayUnion(wine)
-    })
+    this.userProfile = firebase.firestore().collection('users').doc(await this.id).update({
+      cave : firebase.firestore.FieldValue.arrayUnion(Wine)
+    });
   }
 
   getWine(id: string) {

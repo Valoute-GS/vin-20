@@ -21,11 +21,11 @@ export class ProfilePage implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.profileService.getUserProfile().then(userProfileSnapshot => {
+    /*this.profileService.getUserProfile().then(userProfileSnapshot => {
       if (userProfileSnapshot.data()) {
         this.userProfile = userProfileSnapshot.data();
       }
-    });
+    });*/
   }
 
   logOut(): void {

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { WineryService } from '../services/winery.service';
-import { wine } from '../types/wine';
+import { Wine } from '../types/wine';
 import { ModalController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 
@@ -11,7 +11,7 @@ import { Storage } from '@ionic/storage';
 })
 export class DetailsPage implements OnInit {
   @Input() id: string;
-  myWine: wine;
+  myWine: Wine;
   userId;
 
   constructor(

@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { wine } from './../types/wine';
+import { Wine } from './../types/wine';
 import { WineryService } from '../services/winery.service';
 import { ModalController } from '@ionic/angular';
 import { DetailsPage } from '../details/details.page';
 import { Storage } from '@ionic/storage';
 import * as firebase from 'firebase/app';
+import { User } from '../types/user';
 @Component({
   selector: 'app-winery',
   templateUrl: './winery.page.html',
@@ -12,7 +13,7 @@ import * as firebase from 'firebase/app';
 })
 export class WineryPage implements OnInit {
 
-  winesList: wine[][];
+  winesList: Wine[][];
   id: string;
   name: string;
 
@@ -28,20 +29,10 @@ export class WineryPage implements OnInit {
       firebase.firestore().collection('users').doc(this.id).get().then((data) => {
           this.name = data.get('name');
       });
+      this.wineryService.getMyCollection(this.id).then((wines) => {
+        this.parseWines(wines.data().cave);
+      });
     });
-
-    this.winesList = [];
-    const wines = await this.wineryService.getMyCollection(this.id);
-    let j = 0;
-    for (let i = 0; j < wines.length; i++) {
-      if (i % 2 === 0) {
-        this.winesList[i] = wines.slice(j, j + 3);
-        j += 3;
-      } else {
-        this.winesList[i] = wines.slice(j, j + 2);
-        j += 2;
-      }
-    }
   }
 
   async wineDetailsModal(wineId: number) {
@@ -52,4 +43,18 @@ export class WineryPage implements OnInit {
     return await modal.present();
   }
 
+  async parseWines(wines) {
+    this.winesList = [];
+    let j = 0;
+    for (let i = 0; j < wines.length; i++) {
+          if (i % 2 === 0) {
+            this.winesList[i] = wines.slice(j, j + 3);
+            j += 3;
+          } else {
+            this.winesList[i] = wines.slice(j, j + 2);
+            j += 2;
+          }
+  }
+
+}
 }

@@ -1,4 +1,6 @@
-export class wine{
+import { Review } from './review';
+
+export class Wine{
     id:string;
     country:string;
     description:string;
@@ -13,4 +15,5 @@ export class wine{
     title:string;
     variety:string;
     winery:string;
+    review: Review[];
 }
