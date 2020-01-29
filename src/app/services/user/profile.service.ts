@@ -16,12 +16,12 @@ export class ProfileService {
   async getUserProfile(): Promise<firebase.firestore.DocumentSnapshot> {
     const user: firebase.User = await this.authService.getUser();
     this.currentUser = user;
-    this.userProfile = firebase.firestore().doc(`userProfile/${user.uid}`);
+    this.userProfile = firebase.firestore().doc(`users/${user.uid}`);
     return this.userProfile.get();
   }
 
-  updateName(firstName: string, lastName: string): Promise<void> {
-    return this.userProfile.set({ firstName, lastName }, { merge: true });
+  updateName(name: string): Promise<void> {
+    return this.userProfile.set({ name }, { merge: true });
   }
 
   updateDOB(birthDate: string): Promise<any> {

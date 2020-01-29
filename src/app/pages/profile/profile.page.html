@@ -22,10 +22,10 @@
       <ion-grid>
         <ion-row>
           <ion-col class="text-left" size="5"> Name </ion-col>
-          <ion-col class="text-center" size="7" *ngIf="userProfile?.firstName || userProfile?.lastName">
-            {{userProfile?.firstName}} {{userProfile?.lastName}}
+          <ion-col class="text-center" size="7" *ngIf="userProfile?.name">
+            {{userProfile?.name}}
           </ion-col>
-          <ion-col size="7" class="placeholder-profile text-center" *ngIf="!userProfile?.firstName">
+          <ion-col size="7" class="placeholder-profile text-center" *ngIf="!userProfile?.name">
             <span> Tap here to edit. </span>
           </ion-col>
         </ion-row>

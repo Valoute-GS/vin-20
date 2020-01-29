@@ -37,27 +37,22 @@ export class ProfilePage implements OnInit {
 
   async updateName(): Promise<void> {
     const alert = await this.alertCtrl.create({
-      subHeader: 'Your first name & last name',
+      subHeader: 'Your name',
       inputs: [
         {
           type: 'text',
-          name: 'firstName',
-          placeholder: 'Your first name',
-          value: this.userProfile.firstName
+          name: 'name',
+          placeholder: 'Your name',
+          value: this.userProfile.name
         },
-        {
-          type: 'text',
-          name: 'lastName',
-          placeholder: 'Your last name',
-          value: this.userProfile.lastName
-        }
       ],
       buttons: [
         { text: 'Cancel' },
         {
           text: 'Save',
           handler: data => {
-            this.profileService.updateName(data.firstName, data.lastName);
+            this.profileService.updateName(data.name);
+            this.userProfile.name = data.name;
           }
         }
       ]
