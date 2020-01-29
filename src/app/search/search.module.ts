@@ -7,14 +7,14 @@ import { IonicModule } from '@ionic/angular';
 
 import { SearchPage } from './search.page';
 import { RouterModule } from '@angular/router';
-
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild([{ path: '', component: SearchPage }])
-
+    RouterModule.forChild([{ path: '', component: SearchPage }]),
+    Ng2SearchPipeModule
   ],
   declarations: [SearchPage]
 })

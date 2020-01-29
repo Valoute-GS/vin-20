@@ -12,6 +12,7 @@ export class SearchPage implements OnInit {
 
   public allWine: Wine[] = [] ;
   public wine: Wine;
+  public searchText: string;
   constructor(
     public wineryService: WineryService,
     public modalController: ModalController
