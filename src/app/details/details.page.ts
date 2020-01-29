@@ -38,7 +38,7 @@ export class DetailsPage implements OnInit {
 
   addToCave(id: string) {
     this.parent.winesLocal.push(this.wine);
-    this.parent.parseWines(this.wine);
+    this.parent.parseWines(this.parent.winesLocal);
     this.wineryService.addToMyCollection(this.userId, this.wine);
   }
 
