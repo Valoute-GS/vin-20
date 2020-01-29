@@ -37,7 +37,6 @@ export class ProfileService {
 
       await this.currentUser.reauthenticateWithCredential(credential);
       await this.currentUser.updateEmail(newEmail);
-      return this.userProfile.set({ email: newEmail }, { merge: true });
     } catch (error) {
       console.error(error);
     }
