@@ -10,8 +10,7 @@ import { Storage } from '@ionic/storage';
   styleUrls: ['./details.page.scss'],
 })
 export class DetailsPage implements OnInit {
-  @Input() id: string;
-  myWine: Wine;
+  @Input() wine: Wine;
   userId;
 
   constructor(
@@ -25,14 +24,9 @@ export class DetailsPage implements OnInit {
   }
 
   async getWines() {
-    this.storage.get('id').then((val) => { 
+    this.storage.get('id').then((val) => {
       this.userId = val;
     });
-    this.wineryService.getWine(await this.id).then(
-      (wines) => {
-        console.log(wines);
-       // this.myWine = wines;
-      });
   }
 
   async closeModal() {

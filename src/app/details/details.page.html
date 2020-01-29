@@ -7,11 +7,11 @@
   
 </ion-header>
 
-<ion-content *ngIf="this.myWine">
+<ion-content>
   <ion-grid fixed>
     <ion-row>
       <ion-col size="12">
-        <h2>{{myWine.title}}</h2>
+        <h2>{{wine.title}}</h2>
       </ion-col>
     </ion-row>
     <ion-row>
@@ -19,20 +19,20 @@
         <img src="https://cdn0.iconfinder.com/data/icons/valentines-day-add-on/48/v-23-512.png">
       </ion-col>
       <ion-col size="6">
-        <p>Variety : {{myWine.variety}}</p>
-        <p>Location : {{myWine.country}} - {{myWine.province}} - {{myWine.region_1}}</p>
-        <p>Note : {{myWine.points}}%</p>
-        <p>Avg Price : {{myWine.price}}€</p>
-        <ion-button size="small" expand="full" color="primary" (click)="addToCave(this.id)">
+        <p>Variety : {{wine.variety}}</p>
+        <p>Location : {{wine.country}} - {{wine.province}} - {{wine.region_1}}</p>
+        <p>Note : {{wine.points}}%</p>
+        <p>Avg Price : {{wine.price}}€</p>
+        <ion-button size="small" expand="full" color="primary" (click)="addToCave(this.wine.id)">
           Add to my cellar
         </ion-button>
-        <ion-button size="small" expand="full" color="warning" (click)="addToCave(this.id)">
+        <ion-button size="small" expand="full" color="warning" (click)="addToCave(this.wine.id)">
           Add to whishlist
         </ion-button>
       </ion-col>
     </ion-row>
     <ion-row>
-      {{myWine.designation}}
+      {{wine.designation}}
     </ion-row>
   </ion-grid>
 
@@ -46,8 +46,8 @@
         <ion-icon size="large" name="person"></ion-icon>
       </ion-avatar>
       <ion-label class="ion-text-wrap">
-        <h2>{{myWine.taster_name}}({{myWine.taster_twitter_handle}})</h2>
-        <p>{{myWine.description}}</p>
+        <h2>{{wine.taster_name}}({{wine.taster_twitter_handle}})</h2>
+        <p>{{wine.description}}</p>
       </ion-label>
     </ion-item>
 

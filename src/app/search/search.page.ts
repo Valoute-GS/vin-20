@@ -19,7 +19,6 @@ export class SearchPage implements OnInit {
 
   ngOnInit() {
     this.wineryService.getAllWine().then(allWine => {
-      console.log(allWine.data().wines.winery);
       allWine.data().wines.winery.forEach(doc => {
         this.wine = doc;
         this.allWine.push(this.wine);
@@ -27,10 +26,10 @@ export class SearchPage implements OnInit {
     });
   }
 
-  async wineDetailsModal(wineId: number) {
+  async wineDetailsModal(wine: Wine) {
     const modal = await this.modalController.create({
       component: DetailsPage,
-      componentProps: { id: wineId }
+      componentProps: { wine: wine }
     });
     return await modal.present();
   }
