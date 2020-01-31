@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "615408226902",
+    "firebase_url": "https://vinsur20-21b42.firebaseio.com",
+    "project_id": "vinsur20-21b42",
+    "storage_bucket": "vinsur20-21b42.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:615408226902:android:db55497c4ef64a2b5a21f7",
+        "android_client_info": {
+          "package_name": "io.ionic.starter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "615408226902-f782ri1vmllb75shlfb77mgbhpvarv3t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKNxHRFLwoyLQPvuLS_F5xYwaU4Ica4V4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "615408226902-f782ri1vmllb75shlfb77mgbhpvarv3t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
