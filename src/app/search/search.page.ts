@@ -8,6 +8,10 @@ import { DetailsPage } from '../details/details.page';
   templateUrl: './search.page.html',
   styleUrls: ['./search.page.scss'],
 })
+
+/**
+ * Page de recherche de vins
+ */
 export class SearchPage implements OnInit {
 
   public allWine: Wine[] = [] ;
@@ -19,7 +23,10 @@ export class SearchPage implements OnInit {
   ) { }
 
   ngOnInit() {
+
+    // Récupérer tous les vins
     this.wineryService.getAllWine().then(allWine => {
+      // Parcours la liste de vin recupéré et les transforme en objet vin
       allWine.data().wines.winery.forEach(doc => {
         this.wine = doc;
         this.allWine.push(this.wine);
@@ -27,10 +34,11 @@ export class SearchPage implements OnInit {
     });
   }
 
+  // Créer un modal contenant les informations du vin
   async wineDetailsModal(wine: Wine) {
     const modal = await this.modalController.create({
       component: DetailsPage,
-      componentProps: { wine: wine }
+      componentProps: { wine }
     });
     return await modal.present();
   }

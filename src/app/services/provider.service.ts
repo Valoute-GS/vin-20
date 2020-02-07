@@ -4,6 +4,8 @@ import { WineryPage } from '../winery/winery.page';
 @Injectable({
   providedIn: 'root'
 })
+
+// Service de partage de la page winery
 export class ProviderService {
 
   winery: WineryPage;
@@ -11,10 +13,10 @@ export class ProviderService {
   constructor() { }
 
 
-  save(winery:WineryPage){
+  save(winery: WineryPage) {
     this.winery = winery;
   }
-  get(){
+  get() {
     return this.winery;
   }
 }

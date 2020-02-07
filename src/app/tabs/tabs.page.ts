@@ -5,13 +5,12 @@ import { Component } from '@angular/core';
   templateUrl: 'tabs.page.html',
   styleUrls: ['tabs.page.scss']
 })
-export class TabsPage {
-  showSearchBar:boolean = false;
-  
-  constructor() {}
 
-  toggleSearchbar() {
-    this.showSearchBar = !this.showSearchBar;
-  }
+/**
+ * Page dédiée à la navigation (barre de navigation du bas)
+ */
+export class TabsPage {
+
+  constructor() {}
 
 }
