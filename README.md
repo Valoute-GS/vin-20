@@ -12,6 +12,8 @@ Ce projet nécessite l'installation de Ionic :
 
 Une fois le projet récupéré il faut effectuer un `ionic repair` afin de reconstruire toutes les dépendances.
 
+## Lancement
+
 ### Lancement sur navigateur
 
 Pour lancer le projet sous navigateur il suffit de lancer la commande `ionic cordova run browser`.
